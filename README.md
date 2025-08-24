@@ -94,7 +94,3 @@ evaluate(train_path, test_path, type2=True)
 ```
 
 
-
----
-
-**📝 License:** For educational use only.
