@@ -1,49 +1,54 @@
-# Signature Verification System
+# ✍️ Signature Verification System
 
-A Multilayer Perceptron (MLP)-based signature verification system trained on 800 authentic and forged samples from 40 individuals.
+A **Multilayer Perceptron (MLP)-based** signature verification system trained on **800 authentic and forged samples** from 40 individuals.
 
-- **Features:** Extracts 9 statistical and geometric features (eccentricity, skewness, centroid, etc.) for classification.
-- **Preprocessing:** Uses grayscale conversion, Otsu’s thresholding, and Gaussian filtering for robust feature enhancement.
-- **Model:** Implements and trains an MLP with 3 layers (7, 10, and 30 neurons), optimized using Adam and Softmax classifier.
-- **Performance:** Achieves up to 97% training accuracy.
+- 🧮 **Features:** Extracts 9 statistical and geometric features (eccentricity, skewness, centroid, etc.) for classification.
+- 🖼️ **Preprocessing:** Grayscale conversion, Otsu’s thresholding, and Gaussian filtering for robust feature enhancement.
+- 🧠 **Model:** MLP with 3 layers (7, 10, and 30 neurons), optimized using Adam and Softmax classifier.
+- 🏆 **Performance:** Achieves up to **97% training accuracy**.
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
-Code_sign.py           # Main script: feature extraction, training, evaluation
-Main_Code.ipynb        # Jupyter notebook for experimentation
-TestFeatures/
-    testcsv.csv        # Features of the test signature
-Testing/
-    testing_001.csv    # Test signature data (CSV)
+📄 Code_sign.py           # Main script: feature extraction, training, evaluation
+📓 Main_Code.ipynb        # Jupyter notebook for experimentation
+📂 TestFeatures/
+    └── testcsv.csv       # Features of the test signature
+📂 Testing/
+    └── testing_001.csv   # Test signature data (CSV)
     ...
-Training/
-    ...                # Training signature data (CSV)
+📂 Training/
+    ...                   # Training signature data (CSV)
 ```
 
-## How It Works
+---
 
-1. **Preprocessing**
-   - Converts signature images to grayscale ([`rgbgrey`](Code_sign.py)), applies Gaussian filtering, and binarizes using Otsu’s threshold ([`greybin`](Code_sign.py)).
-   - Crops the signature region ([`preproc`](Code_sign.py)).
+## ⚙️ How It Works
 
-2. **Feature Extraction**
-   - Extracts 9 features: ratio, centroid (x, y), eccentricity, solidity, skewness (x, y), kurtosis (x, y) ([`getCSVFeatures`](Code_sign.py)).
+1. **Preprocessing** 🧹  
+   Converts signature images to grayscale, applies Gaussian filtering, and binarizes using Otsu’s threshold. Crops the signature region.
 
-3. **Dataset Preparation**
-   - [`makeCSV`](Code_sign.py) generates CSVs for training and testing from image folders.
+2. **Feature Extraction** 🏷️  
+   Extracts 9 features: ratio, centroid (x, y), eccentricity, solidity, skewness (x, y), kurtosis (x, y).
 
-4. **Model Training**
-   - Defines an MLP with 3 hidden layers ([`multilayer_perceptron`](Code_sign.py)): 7, 10, and 30 neurons.
-   - Uses Adam optimizer and Softmax for classification ([`evaluate`](Code_sign.py)).
+3. **Dataset Preparation** 📊  
+   Generates CSVs for training and testing from image folders.
+
+4. **Model Training** 🤖  
+   - MLP with 3 hidden layers: 7, 10, and 30 neurons.
+   - Adam optimizer and Softmax for classification.
    - Trains on features from the `Training/` folder.
 
-5. **Testing**
-   - Extracts features from a test signature ([`testing`](Code_sign.py)), predicts using the trained model, and outputs "Genuine" or "Forged".
+5. **Testing** 🔍  
+   - Extracts features from a test signature.
+   - Predicts using the trained model.
+   - Outputs **Genuine** or **Forged**.
 
-## Usage
+---
+
+## 🚀 Usage
 
 1. **Install dependencies:**
    ```sh
@@ -63,17 +68,21 @@ Training/
 4. **Results:**
    - The script prints training and test accuracy, and classifies the test signature.
 
-## Main Functions
+---
 
-- [`rgbgrey`](Code_sign.py): RGB to grayscale conversion
-- [`greybin`](Code_sign.py): Grayscale to binary using Otsu’s threshold
-- [`preproc`](Code_sign.py): Preprocessing and cropping
-- [`getCSVFeatures`](Code_sign.py): Extracts 9 features from an image
-- [`makeCSV`](Code_sign.py): Generates training/testing CSVs
-- [`evaluate`](Code_sign.py): Trains and evaluates the MLP
-- [`trainAndTest`](Code_sign.py): Runs cross-validation for multiple users
+## 🛠️ Main Functions
 
-## Example
+- `rgbgrey`: RGB to grayscale conversion
+- `greybin`: Grayscale to binary using Otsu’s threshold
+- `preproc`: Preprocessing and cropping
+- `getCSVFeatures`: Extracts 9 features from an image
+- `makeCSV`: Generates training/testing CSVs
+- `evaluate`: Trains and evaluates the MLP
+- `trainAndTest`: Runs cross-validation for multiple users
+
+---
+
+## 💡 Example
 
 ```python
 # Extract features and classify a signature
@@ -83,3 +92,9 @@ test_image_path = input("Enter path of signature image : ")
 testing(test_image_path)
 evaluate(train_path, test_path, type2=True)
 ```
+
+
+
+---
+
+**📝 License:** For educational use only.
